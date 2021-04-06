@@ -14,11 +14,13 @@
 composer create-project --prefer-dist laravel/laravel=6.* larafood
 ```
 
- ### Configurando Virtual Host no Xamp
+### Configurando Virtual Host no Xamp
+
 _hosts_
 127.0.0.1 larafood.com
 
 _httpd-vhosts.config_
+```
 <VirtualHost larafood.com:80>
     ##ServerAdmin webmaster@dummy-host2.example.com
     DocumentRoot "C:/xampp/htdocs/larafood/larafood/public"
@@ -26,7 +28,7 @@ _httpd-vhosts.config_
     ##ErrorLog "logs/dummy-host2.example.com-error.log"
     ##CustomLog "logs/dummy-host2.example.com-access.log" common
 </VirtualHost>
-
+```
 Crie o seu banco de dados e configure o arquivo .env
 
 
