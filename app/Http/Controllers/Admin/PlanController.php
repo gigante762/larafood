@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePlan;
 use Illuminate\Http\Request;
 use App\Models\Plan;
-use Illuminate\Support\Str;
+
 
 class PlanController extends Controller
 {
@@ -29,16 +29,14 @@ class PlanController extends Controller
 
     public function create()
     {
-        //$data['frontendValidation'] = true;
-        $data = [];
-        return view('admin.pages.plans.create',$data);
+        return view('admin.pages.plans.create');
     }
 
     public function store(StoreUpdatePlan $request)
     {
-        $data = $request->except(['_token','_method']);
-        $data['url'] = Str::kebab($data['name']);
+        $data = $request->all();
         $this->repository->create($data);
+        
         return redirect()->route('plans.index');
         
     }
@@ -85,11 +83,10 @@ class PlanController extends Controller
     {   
         if (!$plan = $this->repository->find($id))
             return redirect()->back();
+       
+        $plan->update( $request->all() );
 
-        $data = $request->all();
-        $data['url'] = Str::kebab($data['name']);
-        $plan->update($data);
-        return redirect()->route('plans.show',$data['url']);
+        return redirect()->route('plans.show',$plan->url);
     }
 
     /**
