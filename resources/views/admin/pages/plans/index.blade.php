@@ -3,7 +3,12 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Planos <a href="{{route('plans.create')}}" class="btn btn-dark">ADD</a></h1>
+    <h1>Planos <a href="{{route('plans.create')}}" class="btn btn-dark">ADD <i class="far fa-plus-square"></i></a></h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('plans.index') }}">Planos</a></li>
+    </ol>
 @endsection
 
 @section('content')
@@ -12,7 +17,7 @@
             <form action="{{route('plans.search')}}" method="post" class="form form-inline">
                 @csrf
                 <input type="text" name='filter' placeholder="Nome" class="form-control mx-1" value="{{$filters['filter'] ?? ''}}"> 
-                <button class="btn btn-info">Persquisar</button>
+                <button class="btn btn-info"><i class="fas fa-search"></i> Persquisar</button>
             </form>
         </div>
         <div class="card-body">

@@ -3,7 +3,8 @@
 @section('title', $plan->name)
 
 @section('content_header')
-    <h1>Detalhes do <i>{{$plan->name}}</i> <a href="{{route('plans.edit',$plan->id)}}" class="btn btn-primary">Editar</a></h1>
+    <h1>Detalhes do <i>{{$plan->name}}</i><a href="{{ route('plans.index') }}"
+        class="btn bg-light"><i class="fas fa-chevron-left"></i> Voltar</a></h1>
 @endsection
 
 @section('content')
@@ -18,9 +19,10 @@
                 <p><b>Preço:</b> R${{ number_format($plan->price, 2, ',', '.') }} </p>
                 <p><b>Descrição:</b> {{$plan->description}}</p>
             </ul>
+            
         </div>
         <div class="card-footer">
-           
+           <a href="{{route('plans.edit',$plan->id)}}" class="btn btn-primary">Editar</a>
         </div>
     </div>
 @endsection

@@ -15,20 +15,9 @@
             <form action="{{route('plans.store')}}" class="form" method="post">
                 @csrf
                 @method('POST')
+                @include('admin.includes.form')
                 <div class="form-group">
-                    <label >Nome:</label>
-                    <input type="text" name='name' class="form-control" value="{{old('name')}}">
-                </div>
-                <div class="form-group">
-                    <label >Preço:</label>
-                    <input type="text" name='price' class="form-control" value="{{old('price')}}">
-                </div>
-                <div class="form-group">
-                    <label >Descrição:</label>
-                    <input type="text" name='description' class="form-control" value="{{old('description')}}">
-                </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-success">
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
                 </div>
 
             </form>
