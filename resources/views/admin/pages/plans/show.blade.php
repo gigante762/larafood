@@ -16,7 +16,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h4> {{ $plan->name }} </h4>
+            <h4 class='mx-2'> {{ $plan->name }}</h4>
         </div>
         <div class="card-body">
             <ul>
@@ -25,10 +25,11 @@
                 <p><b>Preço:</b> R${{ number_format($plan->price, 2, ',', '.') }} </p>
                 <p><b>Descrição:</b> {{ $plan->description }}</p>
             </ul>
-
+            
         </div>
         <div class="card-footer">
             <a href="{{ route('plans.edit', $plan->id) }}" class="btn btn-primary">Editar</a>
+            <a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-warning">Detalhes</a>
         </div>
     </div>
 @endsection

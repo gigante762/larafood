@@ -52,13 +52,18 @@ class PlanController extends Controller
         return view('admin.pages.plans.show',['plan'=>$plan]);
     }
 
-    /**
-     * delete a view based on the url
-     */
+    
     public function destroy($id)
     {   
-        if (!$plan = $this->repository->find($id))
+        if (!$plan = $this->repository->with('details')->find($id))
             return redirect()->back();
+
+        
+
+        if($plan->details->count() > 0)
+            return redirect()
+                    ->back()
+                    ->with('error','Existem detalhes vinculados a esse plano, não foi possivel deletar o plano.');
 
         $this->repository->destroy($id);
         return redirect()->route('plans.index');

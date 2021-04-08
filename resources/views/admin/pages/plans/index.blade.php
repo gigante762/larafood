@@ -35,9 +35,8 @@
                         <tr>
                             <td>{{ $plan->name }}</td>
                             <td>R${{ number_format($plan->price, 2, ',', '.') }}</td>
-                            <td><a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-info">Detalhes</a>
-                            </td>
                             <td><a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning">Ver</a></td>
+                            <td><a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-info">Detalhes</a>                       </td>
                         </tr>
                     @endforeach
                 </tbody>
