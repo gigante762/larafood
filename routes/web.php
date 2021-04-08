@@ -24,9 +24,12 @@ Route::get('admin/plans/{urlPlan}/details','Admin\DetailsPlanController@index')-
 
 
 /* Plans */
-Route::any('admin/plans/search','Admin\PlanController@search')->name('plans.search');
+Route::match(['get','post'],'admin/plans/search','Admin\PlanController@search')->name('plans.search');
 Route::resource('admin/plans','Admin\PlanController');
 
+/* Profiles */
+Route::match(['get','post'],'admin/profiles/search','Admin\ACL\ProfileController@search')->name('profiles.search');
+Route::resource('admin/profiles', 'Admin\ACL\ProfileController');
 
 /* Dashboard home */
 Route::get('/admin','Admin\PlanController@index')->name('admin.index');
