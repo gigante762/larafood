@@ -31,6 +31,10 @@ Route::resource('admin/plans','Admin\PlanController');
 Route::match(['get','post'],'admin/profiles/search','Admin\ACL\ProfileController@search')->name('profiles.search');
 Route::resource('admin/profiles', 'Admin\ACL\ProfileController');
 
+/* Permissions */
+Route::match(['get','post'],'admin/permissions/search','Admin\ACL\PermissionController@search')->name('permissions.search');
+Route::resource('admin/permissions', 'Admin\ACL\PermissionController');
+
 /* Dashboard home */
 Route::get('/admin','Admin\PlanController@index')->name('admin.index');
 
